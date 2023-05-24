@@ -1,7 +1,7 @@
 version: '3.9'
 services:
-  database:
-    image: portainer/portainer-ce:latest
+  portainer:
+    image: portainer/portainer-ee:latest
     container_name: portainer
     ports:
       - 9443:9443
@@ -9,12 +9,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Access existing docker environment on local host
       - portainer_data:/data # Save portainer data persistently
-    healthcheck:
-      test: ["CMD", "curl" ,"-f", "http://localhost:9443/api/status"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
 
 volumes:
   portainer_data:
