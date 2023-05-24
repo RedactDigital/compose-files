@@ -1,3 +1,4 @@
+# Deploys the agent and the portainer api / ui
 services:
   agent:
     image: portainer/agent:latest
