@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  datadog-agent:
+    image: gcr.io/datadoghq/agent:latest
+    container_name: datadog-agent
+    pid: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Access existing docker environment on local host
+      - /proc/:/host/proc/:ro # Mount the host's /proc folder
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro # Mount the host's cgroup files
+    environment:
+      - "DD_API_KEY=${DATADOG_API_KEY}"
+      - "DD_ENV=${DATADOG_ENV}"
+      - "DD_PROCESS_AGENT_ENABLED=true"
+    healthcheck:
+      test: ["CMD", "curl" ,"-f", "http://localhost:8126/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
