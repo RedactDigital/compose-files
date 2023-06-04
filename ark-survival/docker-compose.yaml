@@ -5,10 +5,10 @@ version: '3.9'
 
 services:
   island:
-    build:
+    build: 
       context: .
       dockerfile: Dockerfile
-    image: ark
+    image: ghcr.io/redactdigital/compose-files:ark-latest
     volumes:
       - ./server/config:/home/ark/server/serverfiles/ShooterGame/Saved/Config/LinuxServer
       - server:/home/ark/server/serverfiles
@@ -30,7 +30,7 @@ services:
 
 
   rag:
-    image: ark
+    image: ghcr.io/redactdigital/compose-files:ark-latest
     restart: unless-stopped
     volumes:
       - ./server/config:/home/ark/server/serverfiles/ShooterGame/Saved/Config/LinuxServer

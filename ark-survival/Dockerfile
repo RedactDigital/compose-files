@@ -64,9 +64,6 @@ WORKDIR /home/${USER}/server
 
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh arkserver
 
-# Install the ark server
-RUN ./arkserver auto-install
-
 # Add LinuxGSM cronjobs
 RUN (crontab -l 2>/dev/null; echo "*/5 * * * * /home/${USER}/server/*server monitor > /dev/null 2>&1") | crontab -
 RUN (crontab -l 2>/dev/null; echo "*/30 * * * * /home/${USER}/server/*server update > /dev/null 2>&1") | crontab -

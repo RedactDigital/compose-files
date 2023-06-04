@@ -26,6 +26,11 @@ echo "---"
 echo "Loading exit handler"
 trap exit_handler SIGTERM
 
+# Install the ark server
+echo "---"
+echo "Installing ${MAP}"
+${WORKDIR}/arkserver auto-install
+
 # Configure lgsm config
 echo "---"
 echo "Configuring ${MAP} startup config"
