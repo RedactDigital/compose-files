@@ -9,9 +9,10 @@ services:
       - /proc/:/host/proc/:ro # Mount the host's /proc folder
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro # Mount the host's cgroup files
     environment:
-      - "DD_API_KEY=${DATADOG_API_KEY}"
-      - "DD_ENV=${DATADOG_ENV}"
-      - "DD_PROCESS_AGENT_ENABLED=true"
+      DD_API_KEY: ${DATADOG_API_KEY}
+      DD_ENV: ${DATADOG_ENV}
+      DD_PROCESS_AGENT_ENABLED: true # Collect container metrics and logs
+      DD_INVENTORIES_CONFIGURATION_ENABLED: true # Shows the agents configuration data on datadog UI
     healthcheck:
       test: ["CMD", "curl" ,"-f", "http://localhost:8126/health"]
       interval: 30s
