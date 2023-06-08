@@ -9,6 +9,8 @@ services:
       - agent_network
     ports:
       - 9001:9001
+    environment:
+      AGENT_PORT: 9001
     deploy:
       mode: global
       placement:

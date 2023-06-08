@@ -1,0 +1,21 @@
+# Initializes a new nodejs project with docker
+
+version: '3.7'
+services:
+  app:
+    image: node:20.0-bullseye-slim
+    user: node:node
+    container_name: node
+    restart: unless-stopped
+    working_dir: /usr/src/app
+    # command: sh -c "npm run dev"
+    # healthcheck:
+    #   test: ['CMD', 'curl', '-f', 'http://localhost:5000/healthcheck']
+    #   interval: 5s
+    #   timeout: 30s
+    #   retries: 3
+    #   start_period: 5s
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/usr/src/app
