@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rust
+    container_name: rust
+    # restart: unless-stopped
+    command: sh -c "cargo run"
+    volumes:
+      - ./:/usr/src/app

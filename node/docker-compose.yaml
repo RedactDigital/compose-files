@@ -1,6 +1,4 @@
-# Initializes a new nodejs project with docker
-
-version: '3.7'
+version: '3.9'
 services:
   app:
     image: node:20.0-bullseye-slim
